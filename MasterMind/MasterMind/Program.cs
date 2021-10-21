@@ -11,9 +11,9 @@ namespace MasterMind
         static void Colors(out int[] colors)
         {
             colors = new int[4];
+            Random color = new Random();
             for (int i = 0; i <= 3; i++)
             {
-                Random color = new Random();
                 colors[i] = color.Next(7);
             }
         }
