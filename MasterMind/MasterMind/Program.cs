@@ -8,13 +8,13 @@ namespace MasterMind
 {
     class Program
     {
-        static void Colors(out int[] colors)
+        static void GenerateColors(out int[] colorsArray)
         {
-            colors = new int[4];
-            Random color = new Random();
+            colorsArray = new int[4];
+            Random colorsArray = new Random();
             for (int i = 0; i <= 3; i++)
             {
-                colors[i] = color.Next(7);
+                colorsArray[i] = colorsArray.Next(7);
             }
         }
         static void ReadColors(int[] colors)
@@ -25,10 +25,32 @@ namespace MasterMind
             }
             Console.Read();
         }
+        static void ReponseColorsToArray(string reponseColors, out int[] reponseColorsArray)
+        {
+            reponseColorsArray = new int[4];
+            for (int i = 0; i <= 3; i++)
+            {
+                reponseColorsArray[i] = reponseColors[i];
+            }
+        }
+        static void CompareColors(int[] colorsArray, int[] reponseColorsArray)
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+
+            }
+        }
         static void Main(string[] args)
         {
-            Colors(out int[] colors);
-            ReadColors(colors);
+            string reponseColors = "";
+
+            GenerateColors(out int[] colorsArray);
+
+            Console.WriteLine("Entrez des couleurs");
+            reponseColors = Console.ReadLine();
+
+            ReponseColorsToArray(reponseColors, out int[] reponseColorsArray);
+            CompareColors(colorsArray, reponseColorsArray);
         }
     }
 }
