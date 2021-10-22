@@ -69,10 +69,6 @@ namespace MasterMind
         {
             // Générer les couleurs de l'ordinateur
             GenerateColors(out int[] programColorsArray);
-            programColorsArray[0] = 1;
-            programColorsArray[1] = 2;
-            programColorsArray[2] = 4;
-            programColorsArray[3] = 3;
             // Demander au joueur d'encoder les couleurs
             Console.WriteLine("-------");
             Console.WriteLine("Blanc = 0");
