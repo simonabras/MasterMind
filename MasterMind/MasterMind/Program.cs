@@ -81,36 +81,44 @@ namespace MasterMind
             programColorsArray[1] = 2;
             programColorsArray[2] = 3;
             programColorsArray[3] = 4;
+            // Boucle des manches
             while (redPawn != 4 && round <= 12)
             {
-                // Demander au joueur d'encoder les couleurs
-                Console.WriteLine($"--- Manche {round} ---");
-                Console.WriteLine("Blanc = 0");
-                Console.WriteLine("Noir = 1");
-                Console.WriteLine("Bleu = 2");
-                Console.WriteLine("Rouge = 3");
-                Console.WriteLine("Vert = 4");
-                Console.WriteLine("Jaune = 5");
-                Console.WriteLine("-------");
+                // Début de la partie
+                Console.WriteLine();
+                Console.WriteLine($"----- Manche {round} -----");
+                Console.WriteLine("Blanc = 0  Noir = 1");
+                Console.WriteLine("Bleu = 2  Rouge = 3");
+                Console.WriteLine("Vert = 4  Jaune = 5");
+                Console.WriteLine();
                 Console.WriteLine("Entrez 4 couleurs de votre choix");
+                Console.WriteLine("---------------------");
                 // Stocker les couleurs du joueur
                 string playerColors = Console.ReadLine();
                 // Convertir les couleurs du joueur en tableau
                 PlayerColorsToArray(playerColors, out int[] playerColorsArray);
                 // Comparer les couleurs de l'ordinateur aux couleurs du joueur
                 CompareColors(programColorsArray, playerColorsArray, out redPawn, out whitePawn);
+                Console.WriteLine();
                 Console.WriteLine($"Pions rouges : {redPawn}");
                 Console.WriteLine($"Pions blancs : {whitePawn}");
+                // Vérifier si il y a 4 pions rouges
                 if (redPawn == 4)
                 {
+                    // Fin de la partie
+                    Console.WriteLine();
                     Console.WriteLine("Bien joué ! Vous avez gagné !");
                     Console.ReadLine();
                 }
                 else
                 {
+                    // Ajout d'une manche
                     round++;
+                    // Vérifier si le nombre de manches est plus grand de 12
                     if (round > 12)
                     {
+                        // Fin de la partie
+                        Console.WriteLine();
                         Console.WriteLine("Dommage ! Vous avez perdu !");
                         Console.ReadLine();
                     }
