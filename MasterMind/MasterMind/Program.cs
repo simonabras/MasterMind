@@ -35,27 +35,32 @@ namespace MasterMind
                 playerColorsArray[i] = int.Parse(playerColors[i].ToString());
             }
         }
-        static void CompareColors(int[] programColorsArray, int[] playerColorsArray, out int redPawn, out int whitePawn)
+        static void CompareArray(int[] programColorsArray, out int[] programColorsArray_)
         {
-            int[] programColorsArray_ = new int[4];
-            redPawn = 0;
-            whitePawn = 0;
-
+            programColorsArray_ = new int[4];
             // Ajout des couleurs de l'ordinateur dans un tableau comparatif
             for (int i = 0; i < 4; i++)
             {
                 programColorsArray_[i] = programColorsArray[i];
             }
+        }
+        static void CalculRedPawn(int[] programColorsArray_, int[] playerColorsArray, out int redPawn)
+        {
+            redPawn = 0;
             // Ajout des pions rouges
             for (int i = 0; i < 4; i++)
             {
-                if (playerColorsArray[i] == programColorsArray[i])
+                if (playerColorsArray[i] == programColorsArray_[i])
                 {
                     programColorsArray_[i] = -1;
                     playerColorsArray[i] = -2;
                     redPawn++;
                 }
             }
+        }
+        static void CalculWhitePawn(int[] programColorsArray_, int[] playerColorsArray, out int whitePawn)
+        {
+            whitePawn = 0;
             // Ajout des pions blancs
             for (int i = 0; i < 4; i++)
             {
@@ -77,10 +82,6 @@ namespace MasterMind
 
             // Générer les couleurs de l'ordinateur
             GenerateColors(out int[] programColorsArray);
-            programColorsArray[0] = 1;
-            programColorsArray[1] = 2;
-            programColorsArray[2] = 3;
-            programColorsArray[3] = 4;
             // Boucle des manches
             while (redPawn != 4 && round <= 12)
             {
@@ -98,7 +99,9 @@ namespace MasterMind
                 // Convertir les couleurs du joueur en tableau
                 PlayerColorsToArray(playerColors, out int[] playerColorsArray);
                 // Comparer les couleurs de l'ordinateur aux couleurs du joueur
-                CompareColors(programColorsArray, playerColorsArray, out redPawn, out whitePawn);
+                CompareArray(programColorsArray, out int[] programColorsArray_);
+                CalculRedPawn(programColorsArray_, playerColorsArray, out redPawn);
+                CalculWhitePawn(programColorsArray_, playerColorsArray, out whitePawn);
                 Console.WriteLine();
                 Console.WriteLine($"Pions rouges : {redPawn}");
                 Console.WriteLine($"Pions blancs : {whitePawn}");
