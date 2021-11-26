@@ -74,6 +74,25 @@ namespace MasterMind
                 }
             }
         }
+        static void CheckInt(ref string reponse)
+        {
+            int result;
+            bool success = int.TryParse(reponse, out result);
+            while (!success)
+            {
+                Console.WriteLine("Il faut entrer un nombre !");
+                reponse = Console.ReadLine();
+                success = int.TryParse(reponse, out result);
+            }
+        }
+        static void CheckLength(ref string reponse, int require)
+        {
+            while (reponse.Length != require)
+            {
+                Console.WriteLine($"Il faut entrer {require} nombres !");
+                reponse = Console.ReadLine();
+            }
+        }
         static void Main(string[] args)
         {
             int round = 1;
@@ -96,6 +115,8 @@ namespace MasterMind
                 Console.WriteLine("---------------------");
                 // Stocker les couleurs du joueur
                 string playerColors = Console.ReadLine();
+                CheckInt(ref playerColors);
+                CheckLength(ref playerColors, 4);
                 // Convertir les couleurs du joueur en tableau
                 PlayerColorsToArray(playerColors, out int[] playerColorsArray);
                 // Comparer les couleurs de l'ordinateur aux couleurs du joueur
